@@ -12,6 +12,6 @@ kt_jvm_library(
     srcs = ["TopologicalSortGraph.kt"],
     deps = [
         "//compiler/src/main/java/io/grpc/kotlin/generator/protoc/util/sort",
-        artifact("com.google.guava:guava"),
+        "@maven//:com_google_guava_guava",
     ],
 )

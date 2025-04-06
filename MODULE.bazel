@@ -11,15 +11,18 @@ bazel_dep(name = "grpc-java", repo_name = "io_grpc_grpc_java", version = "1.71.0
 
 maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
 maven.install(
+    name = "maven",
     # Rerun whenever adding new artifacts.
     # $ REPIN=1 bazelisk run @maven//:pin
     artifacts = [
         "com.google.jimfs:jimfs:1.3.0",
+        "com.google.truth:truth:1.4.4",
         "com.google.truth.extensions:truth-proto-extension:1.4.2",
         "com.google.protobuf:protobuf-java:4.30.2",
         "com.google.protobuf:protobuf-kotlin:4.30.2",
         "com.google.guava:guava:33.4.6-android",
         "com.squareup:kotlinpoet:1.14.2",
+        "junit:junit:4.13.2",
         "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.1",
         "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.10.1",
         "org.jetbrains.kotlinx:kotlinx-coroutines-debug:1.10.1",
@@ -27,5 +30,6 @@ maven.install(
     fetch_sources = False,
     lock_file = "//:maven_install.json",
     generate_compat_repositories = True,
+    strict_visibility = True,
 )
 use_repo(maven, "maven")
